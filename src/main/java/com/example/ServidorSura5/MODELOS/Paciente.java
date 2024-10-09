@@ -12,6 +12,9 @@ public class Paciente
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    // validar modelos.
+
     private long id;
     private String nombre; // 35 caracteres y solo letras
     private LocalDate anioNacimiento; // maximo 1900
@@ -23,8 +26,7 @@ public class Paciente
     private String grupoIngresos; // solo se admite A, B o C en mayuscula
     private LocalDate fechaAfiliacion; //  la fecha de afiliacion no puede ser menor a 2010
 
-    public Paciente()
-    {
+    public Paciente() {
     }
 
     public Paciente(long id, String nombre, LocalDate anioNacimiento, String ciudad, String correo, String telefono, String ips, Boolean poliza, String grupoIngresos, LocalDate fechaAfiliacion) {
