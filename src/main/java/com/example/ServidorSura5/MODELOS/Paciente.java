@@ -1,15 +1,17 @@
-package com.example.ServidorSura5.MODELOS;
+﻿package com.example.ServidorSura5.MODELOS;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity //anotación, palabra reservada
 @Table(name="pacientes")
 
 
-public class Paciente
-{
+public class Paciente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
@@ -25,6 +27,31 @@ public class Paciente
     private Boolean poliza; //
     private String grupoIngresos; // solo se admite A, B o C en mayuscula
     private LocalDate fechaAfiliacion; //  la fecha de afiliacion no puede ser menor a 2010
+
+
+    // creando una relacion con la clase Medico
+
+    // me relaciono con 1 medico
+    // JAVA serializa la informacion, para la la BD
+
+    @ManyToOne // relacion muchos a uno.
+    @JoinColumn(name = "fk_medico", referencedColumnName = "id" ) // referenciar tablas con id // En la relacion muchos, queda la FK
+    @JsonBackReference
+    private Medico medico;
+
+    @OneToMany(mappedBy = "paciente")
+    @JsonManagedReference
+    private List<SignoVital> signosVitales;
+
+    @OneToMany(mappedBy = "paciente")
+    @JsonManagedReference
+    private List<Medicamento> Medicamentos;
+
+    @OneToMany(mappedBy = "paciente")
+    @JsonManagedReference
+    private List<Enfermedad> Enfermedades;
+
+
 
     public Paciente() {
     }

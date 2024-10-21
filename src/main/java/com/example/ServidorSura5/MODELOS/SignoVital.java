@@ -1,8 +1,11 @@
 package com.example.ServidorSura5.MODELOS;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name="signosvitales")
@@ -16,9 +19,13 @@ public class SignoVital
     private String valor;
     private LocalDate fechaMedida;
 
+    @ManyToOne
+    @JoinColumn(name = "fk_paciente", referencedColumnName = "id")
+    @JsonBackReference
+    private Paciente pacientes;
+
     public SignoVital()
-    {
-    }
+    {  }
 
     public SignoVital(long id, String nombre, String valor, LocalDate fechaMedida) {
         this.id = id;

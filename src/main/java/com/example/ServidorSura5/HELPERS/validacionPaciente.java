@@ -4,7 +4,7 @@ import com.example.ServidorSura5.MODELOS.Paciente;
 
 import java.time.LocalDate;
 
-public class validacionPaciente {
+/*public class validacionPaciente {
 
     // 1. inyectar un objeto de la clase model
     // inyectar = traer una clase y usarla dentro de otra.
@@ -27,9 +27,4 @@ public class validacionPaciente {
     public boolean fechaAfiliancion (String fecha){};
 
 
-
-
-
-
-
-}
+}*/
